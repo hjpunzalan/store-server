@@ -1,8 +1,7 @@
 using System;
 
-namespace API;
-
-public class WeatherForecast
+namespace API {
+    public class WeatherForecast
 {
     public DateOnly Date { get; set; }
 
@@ -12,3 +11,6 @@ public class WeatherForecast
 
     public string Summary { get; set; }
 }
+
+}
+
