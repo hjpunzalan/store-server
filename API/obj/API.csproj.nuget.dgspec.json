@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\learning\\store-server\\API\\API.csproj": {}
+    "D:\\learning\\store-server\\api\\API.csproj": {}
   },
   "projects": {
-    "D:\\learning\\store-server\\API\\API.csproj": {
+    "D:\\learning\\store-server\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\learning\\store-server\\API\\API.csproj",
+        "projectUniqueName": "D:\\learning\\store-server\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\learning\\store-server\\API\\API.csproj",
+        "projectPath": "D:\\learning\\store-server\\api\\API.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\learning\\store-server\\API\\obj\\",
+        "outputPath": "D:\\learning\\store-server\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config"
