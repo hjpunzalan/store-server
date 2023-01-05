@@ -71,7 +71,9 @@ namespace API.Controllers
             // remove item or reduce quanitty,
             basket.RemoveItem(productId, quantity);
             // Save changes
-            return StatusCode(204);
+            var result = await this._context.SaveChangesAsync() > 0;
+            if (result)    return StatusCode(204);
+            return BadRequest(new ProblemDetails { Title = "Problem removing item from basket" });
         }
 
             private async Task<Basket> RetrieveBasket()
