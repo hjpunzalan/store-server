@@ -27,7 +27,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Basket");
+                    b.ToTable("GetBaskets");
                 });
 
             modelBuilder.Entity("API.Entities.BasketItem", b =>
