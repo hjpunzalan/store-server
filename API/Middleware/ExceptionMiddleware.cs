@@ -39,7 +39,8 @@ namespace API.Middleware
 
                 var options = new JsonSerializerOptions
                 {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    MaxDepth = 30_000
                 };
                 var json = JsonSerializer.Serialize(response,options);
 

@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +20,26 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Basket>> GetBasket()
+        public async Task<ActionResult<BasketDto>> GetBasket()
         {
             var basket = await RetrieveBasket();
 
             if (basket == null) return NotFound();
-            return basket;
+            return new BasketDto
+            {
+                Id = basket.Id,
+                BuyerId = basket.BuyerId,
+                Items = basket.Items.Select(item => new BasketItemDto
+                { // Select is same as .map in js
+                    ProductId = item.ProductId,
+                    Name = item.Product.Name,
+                    Price = item.Product.Price,
+                    PictureUrl = item.Product.PictureUrl,
+                    Type = item.Product.Type,
+                    Brand = item.Product.Brand,
+                    Quantity = item.Quantity,
+                }).ToList()
+        };
         }
 
         [HttpPost] // api/basket?productId=3&quantity=2
