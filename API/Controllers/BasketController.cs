@@ -20,7 +20,10 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<Basket>> GetBasket()
         {
-            return await RetrieveBasket();
+            var basket = await RetrieveBasket();
+
+            if (basket == null) return NotFound();
+            return basket;
         }
 
         [HttpPost] // api/basket?productId=3&quantity=2
