@@ -42,6 +42,7 @@ namespace API.Controllers
             if (product ==  null) return BadRequest(new ProblemDetails{ Title="Product Not Found" });
 
             // add item 
+            basket.AddItem(product, quantity);
             // save changes
             var result = await this._context.SaveChangesAsync() > 0;
             if (result)    return CreatedAtRoute("GetBasket", MapBasketToDto(basket));
