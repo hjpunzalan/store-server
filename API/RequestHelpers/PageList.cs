@@ -1,11 +1,14 @@
+using System.Linq;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace API.RequestHelpers
 {
-    public class PageList<T> : List<T>
+    public class PagedList<T> : List<T>
     {
-        public PageList(List<T> items, int count, int pageNumber, int pageSize)
+        public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {
             MetaData = new MetaData
             {
@@ -19,6 +22,13 @@ namespace API.RequestHelpers
         }
 
         public MetaData MetaData { get; set; }
+
+        public static async Task<PagedList<T>> ToPagedList(IQueryable<T> query, int pageNumber, int pageSize)
+        {
+            var count = await query.CountAsync();
+            var items = await query.Skip(((pageNumber - 1) * pageSize)).Take(pageSize).ToListAsync();
+            return new PagedList<T>(items, count, pageNumber, pageSize);
+        }
 
     }
 }
