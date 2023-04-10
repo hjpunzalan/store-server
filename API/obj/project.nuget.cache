@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7VLu86+OPuWda/J1JVqCUysrMdGIYeTWpF0BG2wb1agi5WfeK1Y2l1mz0aO5ZheovtiVpGpBtjSz+yeTWQnmEw==",
+  "dgSpecHash": "e+n1aDMxtjfIGWTeqetGvBBq7buF45WGQ9lGUYRe43uN/lkCM2fYL5JfopEO2BJQYEqJ3qu5X85p4etiLmbWVg==",
   "success": true,
-  "projectFilePath": "d:\\learning\\store-server\\API\\API.csproj",
+  "projectFilePath": "D:\\learning\\store-server\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.4\\microsoft.aspnetcore.authentication.jwtbearer.7.0.4.nupkg.sha512",

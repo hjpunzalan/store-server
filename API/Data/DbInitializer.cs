@@ -1,15 +1,39 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Data
 {
-    public static class DbInitializer
+  public static class DbInitializer
+  {
+    public static async Task Initialize(StoreContext context, UserManager<User> userManager)
     {
-        public static void Initialize(StoreContext context) {
-                if (context.Products.Any()) return;
+      if (!userManager.Users.Any())
+      {
+        var user = new User
+        {
+          UserName = "bob",
+          Email = "bob@test.com"
+        };
 
-            var products = new List<Product>{
+        await userManager.CreateAsync(user, "Pa$$word123");
+        await userManager.AddToRoleAsync(user, "Member");
+
+        var admin = new User
+        {
+          UserName = "admin",
+          Email = "admin@test.com"
+        };
+
+        await userManager.CreateAsync(admin, "Pa$$word123");
+        await userManager.AddToRolesAsync(admin, new[] { "Member", "Admin" });
+      }
+
+      if (context.Products.Any()) return;
+
+      var products = new List<Product>{
                        new Product
                 {
                     Name = "Angular Speedster Board 2000",
@@ -208,12 +232,12 @@ namespace API.Data
                 },
                 };
 
-                foreach (var product in products)
-                {
-                context.Products.Add(product);
-            }
+      foreach (var product in products)
+      {
+        context.Products.Add(product);
+      }
 
-            context.SaveChanges();
-        }
+      context.SaveChanges();
     }
+  }
 }
