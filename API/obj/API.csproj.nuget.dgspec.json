@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\learning\\store-server\\api\\API.csproj": {}
+    "d:\\learning\\store-server\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\learning\\store-server\\api\\API.csproj": {
+    "d:\\learning\\store-server\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\learning\\store-server\\api\\API.csproj",
+        "projectUniqueName": "d:\\learning\\store-server\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\learning\\store-server\\api\\API.csproj",
+        "projectPath": "d:\\learning\\store-server\\API\\API.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\learning\\store-server\\api\\obj\\",
+        "outputPath": "d:\\learning\\store-server\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.1, )"
