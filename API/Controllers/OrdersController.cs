@@ -12,9 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+
   [Authorize]
   public class OrdersController : BaseApiController
   {
+
+
     private readonly StoreContext _context;
 
     public OrdersController(StoreContext context)
@@ -32,7 +35,7 @@ namespace API.Controllers
     }
 
 
-    [HttpGet]
+    [HttpGet("{id}", Name = "GetOrder")]
     public async Task<ActionResult<Order>> GetOrder(int id)
     {
       return await _context.Orders
@@ -42,7 +45,7 @@ namespace API.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult<Order>> CreateOrder(CreateOrderDto orderDto)
+    public async Task<ActionResult<int>> CreateOrder(CreateOrderDto orderDto)
     {
       var basket = await _context.Baskets
       .RetrieveBasketWithItems(User.Identity.Name)
@@ -98,7 +101,18 @@ namespace API.Controllers
           State = orderDto.ShippingAddress.State,
           Country = orderDto.ShippingAddress.Country,
         };
+
+
+        // Update User.
+        _context.Update(user);
       }
+
+      var result = await _context.SaveChangesAsync() > 0;
+
+      if (result) return CreatedAtRoute("GetOrder", new { id = order.Id }, order.Id);
+
+      return BadRequest("Problem creating order");
+
     }
   }
 }
